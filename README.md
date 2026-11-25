@@ -31,7 +31,7 @@ python -m uvicorn web.app:app --host 127.0.0.1 --port 8766
 # http://127.0.0.1:8766
 ```
 
-详细文档请查看 [完整 README](market-radar/README.md)
+详细文档请查看 [完整 README](README.md)
 
 ## 📦 核心功能
 
