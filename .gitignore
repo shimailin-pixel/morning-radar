@@ -4,5 +4,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .playwright-cli/
-*.png
 node_modules/
+
+# 允许 screenshots 文件夹中的图片
+!screenshots/*.png
