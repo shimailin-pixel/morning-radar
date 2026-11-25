@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日投研雷达 · Morning Radar</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+<div class="app">
+
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">◈</div>
+      <div>
+        <h1>每日投研雷达</h1>
+        <p>Morning Radar · 板块轮动与技术选股</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <nav class="main-tabs" id="main-tabs">
+        <button class="main-tab active" data-tab="radar">全市场雷达</button>
+        <button class="main-tab" data-tab="portfolio">我的持仓 <span class="tab-dot" id="tab-alert-dot"></span></button>
+        <button class="main-tab" data-tab="artibrief">ARTi晨报</button>
+        <button class="main-tab" data-tab="dip">低吸观察池</button>
+      </nav>
+      <span id="status-badge" class="badge badge-loading">加载中</span>
+      <span id="update-time" class="update-time"></span>
+      <button id="refresh-btn" class="btn-ghost" title="刷新数据">↻ 刷新</button>
+    </div>
+  </header>
+
+  <!-- 我的持仓视图（方向一：个性化简报） -->
+  <section class="portfolio-view hidden" id="portfolio-view">
+    <div class="portfolio-hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">每日持仓简报 · <span id="brief-trade-date">--</span></div>
+        <h2 id="brief-headline">正在生成简报...</h2>
+        <p id="brief-subline" class="hero-subline"></p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-stat"><span class="hero-num" id="brief-alert-count">0</span><span class="hero-label">需关注</span></div>
+        <div class="hero-stat"><span class="hero-num" id="brief-watch-count">0</span><span class="hero-label">自选股</span></div>
+        <button id="watchlist-edit-btn" class="btn-ghost">✎ 管理自选股</button>
+      </div>
+    </div>
+    <div id="quiet-notice" class="quiet-notice hidden"></div>
+    <div id="brief-oneliners" class="brief-oneliners"></div>
+    <div id="brief-items" class="brief-items"></div>
+    <div class="portfolio-empty hidden" id="portfolio-empty">
+      <div class="empty-icon">◌</div>
+      <h3>今天没有需要关注的异动</h3>
+      <p>你的持仓走势平稳——这正是"不打扰"的设计：没有实质变化就不推噪音。</p>
+    </div>
+  </section>
+
+  <!-- 自选股管理面板 -->
+  <section class="watchlist-panel hidden" id="watchlist-panel">
+    <div class="wl-head">
+      <h2>管理自选股</h2>
+      <button id="wl-close" class="btn-ghost">收起</button>
+    </div>
+    <div class="wl-body">
+      <table class="wl-table">
+        <thead><tr><th>代码</th><th>名称</th><th>成本价(可选)</th><th>备注</th><th></th></tr></thead>
+        <tbody id="wl-tbody"></tbody>
+      </table>
+      <button id="wl-add" class="btn-add">+ 添加一只</button>
+      <div class="wl-alert-config" id="wl-alert-config"></div>
+      <div class="wl-actions">
+        <button id="wl-save" class="btn-primary">保存并刷新简报</button>
+        <span class="wl-tip" id="wl-tip"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 全市场雷达视图 -->
+  <div id="radar-view">
+
+  <!-- 晨报摘要条（可折叠） -->
+  <section class="brief-bar collapsed" id="brief-bar">
+    <div class="brief-head" id="brief-head">
+      <span class="brief-title">📋 每日晨报摘要 <span class="brief-hint" id="brief-hint">TOP板块与技术精选</span></span>
+      <span class="brief-toggle" id="brief-toggle">展开 ▾</span>
+    </div>
+    <div class="brief-body" id="brief-body"><div class="brief-loading">正在生成晨报摘要...</div></div>
+  </section>
+
+  <!-- 主体 -->
+  <main class="layout">
+
+    <!-- 左：板块轮动 -->
+    <section class="panel sectors-panel">
+      <div class="panel-head">
+        <h2>板块轮动</h2>
+        <div class="seg" id="sector-view-toggle">
+          <button class="seg-btn active" data-view="treemap">热力图</button>
+          <button class="seg-btn" data-view="list">列表</button>
+        </div>
+      </div>
+      <div class="sector-hint">颜色=涨跌幅 · 面积=成交额 · 点击板块查看精选个股</div>
+      <div id="sector-treemap" class="sector-treemap"></div>
+      <div id="sector-list" class="sector-list hidden"></div>
+    </section>
+
+    <!-- 右：精选股票 -->
+    <section class="panel picks-panel">
+      <div class="panel-head">
+        <h2>技术面精选</h2>
+        <span id="picks-subtitle" class="subtitle">按板块轮动强度排序</span>
+      </div>
+      <div id="picks-container" class="picks-container">
+        <div class="empty-state">点击左侧板块，或等待自动加载热门板块精选个股</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span id="footer-source">行情：本地MySQL · 新闻：实时抓取 · 分析：数据驱动</span>
+    <span class="disclaimer">技术信号仅供研究参考，不构成投资建议</span>
+  </footer>
+  </div><!-- /radar-view -->
+
+  <!-- ARTi 官方晨报视图 -->
+  <section class="artibrief-view hidden" id="artibrief-view">
+    <div class="ab-head">
+      <div class="ab-head-left">
+        <div class="ab-eyebrow">ARTi 官方 · 多智能体投研早晚报</div>
+        <h2 id="ab-title">正在加载晨报…</h2>
+        <p id="ab-meta" class="ab-meta"></p>
+      </div>
+      <div class="ab-head-right">
+        <div class="ab-kind-switch" id="ab-kind-switch">
+          <button class="ab-kind-btn active" data-kind="morning">早报</button>
+          <button class="ab-kind-btn" data-kind="evening">晚报</button>
+        </div>
+        <button id="ab-refresh" class="btn-ghost" title="强制刷新晨报">↻ 刷新</button>
+      </div>
+    </div>
+    <div id="ab-summary" class="ab-summary"></div>
+    <article id="ab-content" class="ab-content">
+      <div class="ai-loading"><div class="spinner"></div>正在读取 ARTi 官方晨报…</div>
+    </article>
+    <div class="ab-footer">
+      <span>来源：ARTi 官方早晚报（content_briefs）</span>
+      <a id="ab-origin" href="https://www.artifin.ai/briefs" target="_blank" rel="noopener">在 ARTi 查看原文 →</a>
+    </div>
+  </section>
+
+  <!-- 低吸观察池视图 -->
+  <section class="dip-view hidden" id="dip-view">
+    <div class="dip-head">
+      <div>
+        <div class="ab-eyebrow">反转低吸 · 观察工具</div>
+        <h2>低吸观察池</h2>
+        <p id="dip-meta" class="ab-meta"></p>
+      </div>
+      <div class="ab-head-right">
+        <div class="ab-kind-switch" id="dip-kind-switch">
+          <button class="ab-kind-btn" data-group="a">超跌型(A组)</button>
+          <button class="ab-kind-btn active" data-group="b">缩量企稳(B组)</button>
+        </div>
+        <button id="dip-refresh" class="btn-ghost" title="强制刷新">↻ 刷新</button>
+      </div>
+    </div>
+    <div class="dip-disclaimer" id="dip-note"></div>
+    <div id="dip-flow-sectors" class="dip-flow"></div>
+    <div id="dip-table" class="dip-table">
+      <div class="ai-loading"><div class="spinner"></div>正在筛选低吸候选…</div>
+    </div>
+  </section>
+</div>
+
+<!-- 股票详情抽屉 -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-title">
+      <div>
+        <h2 id="d-stock-name">股票名称</h2>
+        <p><span id="d-stock-code">000000</span> · <span id="d-sector">板块</span></p>
+      </div>
+      <div class="drawer-score">
+        <div class="score-num" id="d-score">0</div>
+        <div class="score-label">技术评分</div>
+      </div>
+    </div>
+    <button class="drawer-close" id="drawer-close">×</button>
+  </div>
+
+  <div class="drawer-body">
+    <!-- 信号标签 + 关键数据 -->
+    <div class="stock-meta">
+      <div id="d-signals" class="signal-tags"></div>
+      <div class="meta-stats" id="d-stats"></div>
+    </div>
+
+    <!-- K线卡片 -->
+    <div class="chart-card">
+      <div class="chart-head">
+        <h3>价格走势与技术指标</h3>
+        <div class="indicator-tabs" id="indicator-tabs">
+          <button class="ind-btn active" data-ind="ma">MA均线</button>
+          <button class="ind-btn" data-ind="macd">MACD</button>
+          <button class="ind-btn" data-ind="boll">BOLL</button>
+          <button class="ind-btn" data-ind="rsi">RSI</button>
+          <button class="ind-btn" data-ind="kdj">KDJ</button>
+        </div>
+      </div>
+      <div id="kline-chart" class="kline-chart"></div>
+      <div class="chart-source" id="chart-source"></div>
+    </div>
+
+    <!-- 实时相关新闻 -->
+    <div class="news-card">
+      <div class="chart-head"><h3>相关新闻 <span class="news-source-tag">实时抓取 · 东财+财联社</span></h3></div>
+      <div id="news-content" class="news-content"><div class="ai-placeholder">加载中...</div></div>
+    </div>
+
+    <!-- AI 三维分析 -->
+    <div class="ai-card">
+      <div class="chart-head">
+        <h3>智能分析 <span style="font-size:11px;color:var(--muted);font-weight:normal">基于实时数据</span></h3>
+        <span class="ai-badge" id="ai-mode">本地数据引擎</span>
+      </div>
+      <div class="ai-tabs" id="ai-tabs">
+        <button class="ai-tab active" data-kind="news">📰 新闻分析</button>
+        <button class="ai-tab" data-kind="report">📋 投研报告</button>
+        <button class="ai-tab" data-kind="council">🎓 大师总结</button>
+        <button class="ai-tab ai-tab-arti" data-kind="arti">🤖 ARTi 智能解读</button>
+      </div>
+      <div id="ai-content" class="ai-content">
+        <div class="ai-placeholder">点击上方标签生成对应分析（首次生成需几秒）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

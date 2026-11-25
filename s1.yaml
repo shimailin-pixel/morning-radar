@@ -1,0 +1,193 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ◈
+        - generic [ref=e6]:
+          - heading "每日投研雷达" [level=1] [ref=e7]
+          - paragraph [ref=e8]: Morning Radar · 板块轮动与技术选股
+      - generic [ref=e9]:
+        - navigation [ref=e10]:
+          - button "全市场雷达" [ref=e11] [cursor=pointer]
+          - button "我的持仓" [ref=e12] [cursor=pointer]
+          - button "ARTi晨报" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]: 数据引擎 + ARTi
+        - generic [ref=e78]: 更新于 2026-11-24 10:58
+        - button "↻ 刷新" [ref=e16] [cursor=pointer]
+    - generic [ref=e17]:
+      - generic [ref=e19] [cursor=pointer]:
+        - generic [ref=e20]: 📋 每日晨报摘要 TOP板块与技术精选
+        - generic [ref=e21]: 展开 ▾
+      - main [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]:
+            - heading "板块轮动" [level=2] [ref=e25]
+            - generic [ref=e26]:
+              - button "热力图" [ref=e27] [cursor=pointer]
+              - button "列表" [ref=e28] [cursor=pointer]
+          - generic [ref=e29]: 颜色=涨跌幅 · 面积=成交额 · 点击板块查看精选个股
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - heading "技术面精选" [level=2] [ref=e33]
+            - generic [ref=e34]: 按板块轮动强度排序
+          - generic [ref=e35]:
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - heading "逆变器" [level=3] [ref=e83]
+                - generic [ref=e84]: 评估10只 · 精选1只
+              - generic [ref=e85] [cursor=pointer]:
+                - generic [ref=e86]: "1"
+                - generic [ref=e87]:
+                  - generic [ref=e88]:
+                    - text: 德业股份
+                    - generic [ref=e89]: "605117"
+                  - generic [ref=e91]:
+                    - text: 短期转强 MA2075.6
+                    - generic [ref=e92]: 量比0.00·板块前50%RSI46.0距20日高-9.8%
+                  - generic [ref=e93]:
+                    - generic "趋势 22/30" [ref=e94]
+                    - generic "动量 10/25" [ref=e96]
+                    - generic "量能 11/20" [ref=e98]
+                    - generic "位置 8/15" [ref=e100]
+                    - generic "超跌反弹 0/10" [ref=e102]
+                - generic [ref=e103]:
+                  - generic [ref=e104]: "51"
+                  - generic [ref=e105]: 技术评分
+                  - generic [ref=e106]: +5.39%
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - heading "消费电子零部件及组装" [level=3] [ref=e109]
+                - generic [ref=e110]: 评估12只 · 精选1只
+              - generic [ref=e111] [cursor=pointer]:
+                - generic [ref=e112]: "1"
+                - generic [ref=e113]:
+                  - generic [ref=e114]:
+                    - text: 鸿日达
+                    - generic [ref=e115]: "301285"
+                  - generic [ref=e117]:
+                    - text: 均线偏弱 MA578.1
+                    - generic [ref=e118]: 量比0.00·板块前55%RSI50.5距20日高-10.8%
+                  - generic [ref=e119]:
+                    - generic "趋势 10/30" [ref=e120]
+                    - generic "动量 20/25" [ref=e122]
+                    - generic "量能 10.2/20" [ref=e124]
+                    - generic "位置 8/15" [ref=e126]
+                    - generic "超跌反弹 0/10" [ref=e128]
+                - generic [ref=e129]:
+                  - generic [ref=e130]: "48.2"
+                  - generic [ref=e131]: 技术评分
+                  - generic [ref=e132]: +8.73%
+            - generic [ref=e133]:
+              - generic [ref=e134]:
+                - heading "消费电子" [level=3] [ref=e135]
+                - generic [ref=e136]: 评估12只 · 精选4只
+              - generic [ref=e137] [cursor=pointer]:
+                - generic [ref=e138]: "1"
+                - generic [ref=e139]:
+                  - generic [ref=e140]:
+                    - text: 深科技
+                    - generic [ref=e141]: "000021"
+                  - generic [ref=e143]:
+                    - text: 均线偏弱 MA525.3
+                    - generic [ref=e144]: 量比0.00·板块前50%RSI40.0距20日高-13.8%
+                  - generic [ref=e145]:
+                    - generic "趋势 0/30" [ref=e146]
+                    - generic "动量 10/25" [ref=e147]
+                    - generic "量能 11/20" [ref=e149]
+                    - generic "位置 0/15" [ref=e151]
+                    - generic "超跌反弹 0/10" [ref=e152]
+                - generic [ref=e153]:
+                  - generic [ref=e154]: "21"
+                  - generic [ref=e155]: 技术评分
+                  - generic [ref=e156]: 0.00%
+              - generic [ref=e157] [cursor=pointer]:
+                - generic [ref=e158]: "2"
+                - generic [ref=e159]:
+                  - generic [ref=e160]:
+                    - text: 领益智造
+                    - generic [ref=e161]: "002600"
+                  - generic [ref=e163]:
+                    - text: 均线偏弱 MA510.4
+                    - generic [ref=e164]: 量比0.00·板块前50%RSI32.6距20日高-14.9%
+                  - generic [ref=e165]:
+                    - generic "趋势 0/30" [ref=e166]
+                    - generic "动量 0/25" [ref=e167]
+                    - generic "量能 11/20" [ref=e168]
+                    - generic "位置 0/15" [ref=e170]
+                    - generic "超跌反弹 10/10" [ref=e171]
+                - generic [ref=e173]:
+                  - generic [ref=e174]: "21"
+                  - generic [ref=e175]: 技术评分
+                  - generic [ref=e176]: 0.00%
+              - generic [ref=e177] [cursor=pointer]:
+                - generic [ref=e178]: "3"
+                - generic [ref=e179]:
+                  - generic [ref=e180]:
+                    - text: 漫步者
+                    - generic [ref=e181]: "002351"
+                  - generic [ref=e183]:
+                    - text: 均线偏弱 MA511.6
+                    - generic [ref=e184]: 量比0.00·板块前50%RSI46.9距20日高-9.1%
+                  - generic [ref=e185]:
+                    - generic "趋势 8/30" [ref=e186]
+                    - generic "动量 0/25" [ref=e188]
+                    - generic "量能 11/20" [ref=e189]
+                    - generic "位置 0/15" [ref=e191]
+                    - generic "超跌反弹 0/10" [ref=e192]
+                - generic [ref=e193]:
+                  - generic [ref=e194]: "19"
+                  - generic [ref=e195]: 技术评分
+                  - generic [ref=e196]: 0.00%
+              - generic [ref=e197] [cursor=pointer]:
+                - generic [ref=e198]: "4"
+                - generic [ref=e199]:
+                  - generic [ref=e200]:
+                    - text: 拓邦股份
+                    - generic [ref=e201]: "002139"
+                  - generic [ref=e203]:
+                    - text: 均线偏弱 MA59.0
+                    - generic [ref=e204]: 量比0.00·板块前50%RSI36.5距20日高-15.7%
+                  - generic [ref=e205]:
+                    - generic "趋势 0/30" [ref=e206]
+                    - generic "动量 0/25" [ref=e207]
+                    - generic "量能 11/20" [ref=e208]
+                    - generic "位置 0/15" [ref=e210]
+                    - generic "超跌反弹 0/10" [ref=e211]
+                - generic [ref=e212]:
+                  - generic [ref=e213]: "11"
+                  - generic [ref=e214]: 技术评分
+                  - generic [ref=e215]: 0.00%
+      - contentinfo [ref=e37]:
+        - generic [ref=e38]: 行情：本地MySQL · 截至 2026-11-24 · 新闻：实时抓取 · 分析：数据驱动
+        - generic [ref=e39]: 技术信号仅供研究参考，不构成投资建议
+  - generic [ref=e40]:
+    - generic [ref=e41]:
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - heading "股票名称" [level=2] [ref=e44]
+          - paragraph [ref=e45]: 000000 · 板块
+        - generic [ref=e46]:
+          - generic [ref=e47]: "0"
+          - generic [ref=e48]: 技术评分
+      - button "×" [ref=e49] [cursor=pointer]
+    - generic [ref=e50]:
+      - generic [ref=e53]:
+        - heading "价格走势与技术指标" [level=3] [ref=e54]
+        - generic [ref=e55]:
+          - button "MA均线" [ref=e56] [cursor=pointer]
+          - button "MACD" [ref=e57] [cursor=pointer]
+          - button "BOLL" [ref=e58] [cursor=pointer]
+          - button "RSI" [ref=e59] [cursor=pointer]
+          - button "KDJ" [ref=e60] [cursor=pointer]
+      - generic [ref=e63]:
+        - heading "相关新闻 实时抓取 · 东财+财联社" [level=3] [ref=e65]
+        - generic [ref=e66]: 加载中...
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - heading "智能分析 基于实时数据" [level=3] [ref=e70]
+          - generic [ref=e71]: 本地数据 + ARTi
+        - generic [ref=e72]:
+          - button "📰 新闻分析" [ref=e73] [cursor=pointer]
+          - button "📋 投研报告" [ref=e74] [cursor=pointer]
+          - button "🎓 大师总结" [ref=e75] [cursor=pointer]
+        - generic [ref=e76]: 点击上方标签生成对应分析（首次生成需几秒）
