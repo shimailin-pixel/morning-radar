@@ -53,12 +53,6 @@ python -m uvicorn web.app:app --host 127.0.0.1 --port 8766
 - **缓存**: SQLite 分层缓存(行情/新闻/分析/低吸池)
 - **AI增强**: ARTi API (可选,不配Key也能完整运行)
 
-## 📖 文档
-
-- [完整功能说明]([market-radar/README.md](https://github.com/shimailin-pixel/morning-radar/blob/main/README_DETAILED.md))
-- [API 端点]([market-radar/README.md](https://github.com/shimailin-pixel/morning-radar/blob/main/README_DETAILED.md)#api-端点)
-- [技术架构]([market-radar/README.md](https://github.com/shimailin-pixel/morning-radar/blob/main/README_DETAILED.md)#技术架构)
-- [样例输出](market-radar/samples/)
 
 ## ️ 合规声明
 
